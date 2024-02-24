@@ -1,0 +1,1 @@
+# libxml2_flutter_plugin
