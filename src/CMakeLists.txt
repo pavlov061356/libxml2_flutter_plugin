@@ -5,8 +5,13 @@ cmake_minimum_required(VERSION 3.10)
 
 project(libxml2_flutter_plugin_library VERSION 0.0.1 LANGUAGES C)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libxml2-master/include)
+
+find_package(LibXml2 REQUIRED)
+
 add_library(libxml2_flutter_plugin SHARED
   "libxml2_flutter_plugin.c"
+
 )
 
 set_target_properties(libxml2_flutter_plugin PROPERTIES

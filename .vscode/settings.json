@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "libxml2_flutter_plugin.h": "c"
+    }
+}

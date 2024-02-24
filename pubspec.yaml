@@ -8,12 +8,12 @@ environment:
   flutter: '>=3.3.0'
 
 dependencies:
+  ffi: ^2.1.0
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
-  ffi: ^2.1.0
   ffigen: ^9.0.1
   flutter_test:
     sdk: flutter
@@ -45,7 +45,11 @@ flutter:
     # -------------------
       android:
         package: com.example.libxml
-        pluginClass: LibXmlPlugin
+        dartPluginClass: XmlValidator
+        ffiPlugin: true
+      linux: 
+        dartPluginClass: XmlValidator
+        ffiPlugin: true
     # -------------------
 
   # To add assets to your plugin package, add an assets section, like this:

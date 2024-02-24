@@ -68,3 +68,37 @@ class Libxml2FlutterPluginBindings {
   late final _sum_long_running =
       _sum_long_runningPtr.asFunction<int Function(int, int)>();
 }
+
+class NativeLibrary {
+  /// Holds the symbol lookup function.
+  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
+      _lookup;
+
+  /// The symbols are looked up in [dynamicLibrary].
+  NativeLibrary(ffi.DynamicLibrary dynamicLibrary)
+      : _lookup = dynamicLibrary.lookup;
+
+  /// The symbols are looked up with [lookup].
+  NativeLibrary.fromLookup(
+      ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
+          lookup)
+      : _lookup = lookup;
+
+  ffi.Pointer<ffi.Char> validateXml(
+    ffi.Pointer<ffi.Char> xmlPath,
+    ffi.Pointer<ffi.Char> xsdPath,
+  ) {
+    return _validateXml(
+      xmlPath,
+      xsdPath,
+    );
+  }
+
+  late final _validateXmlPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('validateXml');
+  late final _validateXml = _validateXmlPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+}
