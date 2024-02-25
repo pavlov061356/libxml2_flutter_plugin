@@ -139,19 +139,17 @@ Future<SendPort> _helperIsolateSendPort = () async {
 }();
 
 class XmlValidator {
-  String libraryPath;
+  // String libraryPath;
 
-  late NativeLibrary _nativeLibrary;
+  late NativeLibrary nativeLibrary;
 
-  XmlValidator(this.libraryPath) {
-    _nativeLibrary = NativeLibrary(DynamicLibrary.open(libraryPath));
-  }
+  XmlValidator(this.nativeLibrary);
 
   /// Validates an XML file against an XSD file.
   ///
   /// Returns the error message if the validation fails, or null if the validation passes.
   String? validateXml(String xmlPath, String xsdPath) {
-    var ptr = _nativeLibrary.validateXml(
+    var ptr = nativeLibrary.validateXml(
         xmlPath.toNativeUtf8().cast(), xsdPath.toNativeUtf8().cast());
 
     if (ptr != nullptr) {
@@ -159,5 +157,14 @@ class XmlValidator {
     } else {
       return null;
     }
+  }
+}
+
+class XmlValidatorPlugin {
+  static XmlValidator? instance;
+
+  /// Registers this class as the default instance of [HelloPluginPlatform].
+  static void registerWith() {
+    XmlValidatorPlugin.instance = XmlValidator(NativeLibrary(_dylib));
   }
 }

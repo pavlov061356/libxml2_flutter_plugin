@@ -23,7 +23,7 @@ FFI_PLUGIN_EXPORT intptr_t sum_long_running(intptr_t a, intptr_t b)
   return a + b;
 }
 
-charptr_t static void schemaParseErrorHandler(void *arg, xmlErrorPtr error)
+static void schemaParseErrorHandler(void *arg, xmlErrorPtr error)
 {
   fprintf(stderr, "Error at line %d, column %d\n%s", error->line, error->int2, error->message);
   *((bool *)arg) = true;

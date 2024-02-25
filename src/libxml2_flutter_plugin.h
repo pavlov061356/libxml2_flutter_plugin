@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <xmlreader.h>
-#include <encoding.h>
-#include <xmlwriter.h>
+#include <libxml/xmlreader.h>
+#include <libxml/encoding.h>
+#include <libxml/xmlwriter.h>
 
 #if _WIN32
 #include <windows.h>

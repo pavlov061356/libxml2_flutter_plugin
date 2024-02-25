@@ -45,10 +45,10 @@ flutter:
     # -------------------
       android:
         package: com.example.libxml
-        dartPluginClass: XmlValidator
+        dartPluginClass: XmlValidatorPlugin
         ffiPlugin: true
       linux: 
-        dartPluginClass: XmlValidator
+        dartPluginClass: XmlValidatorPlugin
         ffiPlugin: true
     # -------------------
 
